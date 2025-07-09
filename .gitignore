@@ -1,0 +1,17 @@
+# Ignore Python virtual environment
+myenv/
+.venv/
+env/
+venv/
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore secrets
+*.env
+*.json
+*.key
+*.pem
+credentials.*
+service-account-*.json
+
