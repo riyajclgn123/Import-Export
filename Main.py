@@ -14,9 +14,9 @@ def run_script(script_name, *args):
     Runs a Python script using subprocess with optional arguments.
     """
 
-    python_executable = shutil.which("python")  # Finds Python in system PATH
+    python_executable = shutil.which("python")
 
-    #python_executable = os.path.join(os.getenv('VIRTUAL_ENV'), 'Scripts', 'python.exe')
+
     try:
         subprocess.run([python_executable, script_name] + list(args), check=True)
     except subprocess.CalledProcessError as e:
@@ -31,12 +31,10 @@ def main():
     print("4. Import Backup File")
 
 
-    #Add an option for the backup of existing
 
     choice = input("Enter the number corresponding to your choice: ")
 
-    #In the import section, before importing the new file to the firestore, backup the original file before importing
-    # append timestamp to the backup file
+
     if choice == '1':
         print("************************ Creating the backup file********************")
         run_script(os.path.abspath("Export.py"), '--backup')
