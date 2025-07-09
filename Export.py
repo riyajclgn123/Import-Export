@@ -39,7 +39,7 @@ def main(backup):
     file_path = json_file_path
     if backup:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        file_path = f"{backup_file_path}_{timestamp}.json"  # ensure .json extension
+        file_path = f"{backup_file_path}_{timestamp}.json"  # it should be .json extension
 
     # Construct command to export Firestore data
     command = [
@@ -48,10 +48,8 @@ def main(backup):
         "-b", file_path
     ]
 
-    # Wrap arguments with spaces in double quotes
     command = [f'"{arg}"' if ' ' in arg else arg for arg in command]
 
-    # Run the command
     try:
         subprocess.run(" ".join(command), shell=True, check=True)
     except subprocess.CalledProcessError as e:
@@ -67,11 +65,11 @@ def main(backup):
             convert_json_to_excel(json_data, excel_file_path)
             print(f'✅ Excel file saved successfully at: {excel_file_path}')
         except FileNotFoundError:
-            print("❌ Error: JSON file not found.")
+            print("Sorry, Error: JSON file not found.")
         except json.JSONDecodeError:
-            print("❌ Error: Failed to decode JSON file.")
+            print("Sorry : Failed to decode JSON file.")
         except ValueError as e:
-            print(f"❌ Error: {e}")
+            print(f" Error: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Export Firestore data to Excel.')
